@@ -21,8 +21,8 @@
   }
   const callName = vocative(dogName);
   $("#titleName").textContent = callName;
-  $("#coverTitle").textContent = `${dogName}.jpg`;
-  $("#albumTitle").textContent = `📁 ${C.albumTitle || `${dogName} 사진첩`}`;
+  $("#coverTitle").textContent = `𐙚 ${dogName}.jpg`;
+  $("#albumTitle").textContent = `꒰ა ${C.albumTitle || `${dogName} 사진첩`} ໒꒱`;
   $("#albumSub").textContent = C.albumSub || `반짝반짝 우리 ${dogName}`;
   $("#gbSub").textContent = `${dogName}에게 한마디 남겨 주세요`;
   if (C.speech) $("#speech").textContent = C.speech;
@@ -47,7 +47,7 @@
 
     document.title = `${next.getFullYear()} ${callName} 생일 축하해`;
     tags.push(`#${age}번째생일`, `#${next.getFullYear()}.${pad2(m)}.${pad2(d)}`);
-    $("#ribbon").textContent = `♡ ${age}번째 생일 파티 ♡`;
+    $("#ribbon").textContent = `𐙚 ${age}번째 생일 파티 𐙚`;
     $("#ageBurstText").replaceChildren(String(age), el("small", null, "살"));
 
     const together = Math.round((today - birth) / DAY) + 1;
@@ -74,10 +74,10 @@
     $("#ribbon").textContent = "♡ 생일 파티 ♡";
     $("#ageBurst").hidden = true;
   }
-  $("#tags").textContent = tags.join("  ");
+  $("#tags").textContent = `⋆˚꩜｡ ${tags.join("  ")} ⋆｡°✩`;
 
   // ---------- Marquee ----------
-  const phrase = [`★ ${callName} 생일 축하해`, "♡ 오래오래 건강하자", "★ 사랑해"];
+  const phrase = [`⋆˚꩜｡ ${callName} 생일 축하해`, "𐔌՞. .՞𐦯 오래오래 건강하자", "˚ʚ♡ɞ˚ 사랑해"];
   const marquee = $("#marquee");
   for (let i = 0; i < 18; i++) marquee.append(el("span", null, phrase[i % phrase.length]));
 
@@ -400,7 +400,7 @@
   function renderMessage(m, prepend) {
     const li = el("li", "msg");
     const foot = el("footer");
-    foot.append(el("b", null, `♡ ${m.name}`), el("span", null, m.time || ""));
+    foot.append(el("b", null, `ᡣ𐭩 ${m.name}`), el("span", null, m.time || ""));
     li.append(el("p", null, m.text), foot);
     prepend ? list.prepend(li) : list.append(li);
   }
@@ -615,7 +615,55 @@
     const relightBtn = $("#relightBtn");
     const count = Math.min(Math.max(ageNow || 1, 1), 20);
     const defaultMsg = msg.textContent;
+    const nickname = C.nickname || dogName;
     $("#cakeSub").textContent = `촛불 ${count}개를 모두 꺼 주세요`;
+    $("#cakeBody").insertAdjacentHTML("afterbegin", cakeSvg(`${nickname} ${count}살`));
+
+    // 크림이 흘러내리는 윗면 (x0~x1, 윗선 y, 기본 두께 base)
+    function drip(x0, x1, y, base) {
+      const lens = [12, 24, 7, 18, 28, 9, 20, 14, 26, 8];
+      const r = 14;
+      let d = `M${x0} ${y + r} Q${x0} ${y} ${x0 + r} ${y} H${x1 - r} Q${x1} ${y} ${x1} ${y + r} V${y + base}`;
+      let i = 0;
+      for (let x = x1; x > x0; x -= 26, i++) {
+        const xa = Math.max(x0, x - 26);
+        const L = lens[i % lens.length];
+        d += ` C${x} ${y + base + L * 1.35} ${xa} ${y + base + L * 1.35} ${xa} ${y + base}`;
+      }
+      return `<path d="${d} Z" fill="#fff" stroke="#3b2370" stroke-width="3.5" stroke-linejoin="round"/>`;
+    }
+
+    function cakeSvg(label) {
+      const ink = 'stroke="#3b2370"';
+      let s = '<svg viewBox="0 0 460 330" aria-hidden="true">';
+      // 받침대
+      s += `<ellipse cx="230" cy="318" rx="88" ry="10" fill="#ffc6e2" ${ink} stroke-width="4"/>`;
+      s += `<rect x="210" y="284" width="40" height="34" fill="#fff" ${ink} stroke-width="4"/>`;
+      for (let x = 30; x <= 430; x += 20) s += `<circle cx="${x}" cy="290" r="8" fill="#ffa6d2" ${ink} stroke-width="2.5"/>`;
+      s += `<rect x="16" y="266" width="428" height="24" rx="12" fill="#fff" ${ink} stroke-width="4"/>`;
+      // 아랫단 (라벤더 + 물방울 무늬 + 진주 테두리 + 명패)
+      s += `<rect x="40" y="166" width="380" height="106" rx="16" fill="#cdbcff" ${ink} stroke-width="4"/>`;
+      for (let y = 196; y <= 250; y += 26) for (let x = 64 + ((y / 26) % 2) * 13; x <= 400; x += 26) s += `<circle cx="${x}" cy="${y}" r="4" fill="#fff" opacity=".75"/>`;
+      s += drip(40, 420, 166, 14);
+      for (let x = 54; x <= 408; x += 18) s += `<circle cx="${x}" cy="266" r="6" fill="#fff" ${ink} stroke-width="2"/>`;
+      s += `<rect x="140" y="204" width="180" height="48" rx="24" fill="#fff" ${ink} stroke-width="3.5"/>`;
+      s += `<text x="230" y="236" text-anchor="middle" font-size="23" fill="#ff4fa8">${label} ♡</text>`;
+      // 체리
+      for (const cx of [62, 398]) {
+        s += `<path d="M${cx} 150 q6 -16 16 -20" fill="none" ${ink} stroke-width="3" stroke-linecap="round"/>`;
+        s += `<circle cx="${cx}" cy="156" r="12" fill="#ff4f6d" ${ink} stroke-width="3"/><circle cx="${cx - 4}" cy="151" r="3.5" fill="#fff"/>`;
+      }
+      // 윗단 (핑크 + 스프링클)
+      s += `<rect x="85" y="82" width="290" height="94" rx="16" fill="#ff9fd0" ${ink} stroke-width="4"/>`;
+      const sprinkle = ["#ffe95c", "#8fd3ff", "#a9f0d2", "#fff", "#c9b7ff"];
+      for (let k = 0; k < 22; k++) {
+        const x = 100 + ((k * 53) % 262);
+        const y = 120 + ((k * 31) % 46);
+        s += `<rect x="${x}" y="${y}" width="11" height="4" rx="2" fill="${sprinkle[k % sprinkle.length]}" ${ink} stroke-width="1.2" transform="rotate(${(k * 47) % 180} ${x + 5} ${y + 2})"/>`;
+      }
+      s += drip(85, 375, 82, 13);
+      return s + "</svg>";
+    }
 
     const candles = Array.from({ length: count }, (_, i) => {
       const c = el("button", "candle");
@@ -640,7 +688,7 @@
     function celebrate() {
       stopMic();
       msg.classList.add("done");
-      msg.textContent = `🎉 소원 빌었어? ${callName} ${count}살 축하해! ♡`;
+      msg.textContent = (C.cakeMessage || `${nickname} {age}살 생일 축하해 💕`).replace("{age}", count);
       relightBtn.hidden = false;
       blowBtn.hidden = true;
       const r = wrap.getBoundingClientRect();
@@ -797,6 +845,32 @@
     });
   })();
 
-  loadPhotos();
-  loadMessages();
+  // ---------- 섹션 소제목 꾸미기 ----------
+  for (const small of document.querySelectorAll(".sec-title small")) {
+    small.textContent = `˚ʚ♡ɞ˚ ${small.textContent} ˚ʚ♡ɞ˚`;
+  }
+
+  // ---------- 꾸미기 특수문자 글꼴 ----------
+  // 기기에 없는 문자(𐙚 ꩜ ꒰꒱ 등)가 네모로 깨지지 않도록, 페이지에 쓰인 문자만 골라 구글 폰트에서 받아옴
+  function loadDecoFonts(extra) {
+    const chars = new Set();
+    for (const ch of document.body.textContent + extra) {
+      const cp = ch.codePointAt(0);
+      const skip = cp < 0x250
+        || (cp >= 0x1100 && cp <= 0x11ff) || (cp >= 0x3130 && cp <= 0x318f) || (cp >= 0xac00 && cp <= 0xd7a3)
+        || (cp >= 0x4e00 && cp <= 0x9fff) || (cp >= 0xfe00 && cp <= 0xfe0f) || cp >= 0x1f000;
+      if (!skip) chars.add(ch);
+    }
+    if (!chars.size) return;
+    const families = getComputedStyle(document.documentElement).getPropertyValue("--deco-fonts")
+      .split(",").map((f) => "family=" + f.trim().replace(/"/g, "").replace(/ /g, "+"));
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = `https://fonts.googleapis.com/css2?${families.join("&")}&text=${encodeURIComponent([...chars].join(""))}&display=swap`;
+    document.head.append(link);
+  }
+
+  Promise.all([loadPhotos(), loadMessages()]).then(() => {
+    loadDecoFonts([C.cakeMessage, "🐾 가 지나갔어요! ᡣ𐭩 ⋆˚꩜｡"].join(""));
+  });
 })();

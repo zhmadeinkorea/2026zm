@@ -9,9 +9,11 @@
   --yellow: #ffe95c;
   --mint: #a9f0d2;
   --white: #ffffff;
-  --pixel: "Galmuri11", "Galmuri9", monospace;
-  --pixel-bold: "Galmuri11", "Galmuri9", monospace;
-  --round: "Jua", "Galmuri11", sans-serif;
+  /* 꾸미기 특수문자용 (app.js가 페이지에 쓰인 글자만 골라서 받아옴) */
+  --deco-fonts: "Noto Sans Symbols 2", "Noto Sans Symbols", "Noto Sans Math", "Noto Sans Cham", "Noto Sans Elbasan", "Noto Sans Armenian", "Noto Sans Meroitic", "Noto Sans Linear A", "Noto Sans Yi", "Noto Sans Canadian Aboriginal", "Noto Sans Georgian", "Noto Sans Lao", "Noto Sans Mongolian", "Noto Sans Inscriptional Pahlavi", "Noto Sans Oriya", "Noto Sans Telugu", "Noto Sans Bengali", "Noto Sans";
+  --pixel: "Galmuri11", "Galmuri9", var(--deco-fonts), monospace;
+  --pixel-bold: "Galmuri11", "Galmuri9", var(--deco-fonts), monospace;
+  --round: "Jua", "Galmuri11", var(--deco-fonts), sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -206,7 +208,7 @@ button { font-family: inherit; }
 /* 지미 말풍선 */
 .speech {
   position: absolute; left: -46px; bottom: 54px; z-index: 2;
-  max-width: 190px;
+  white-space: nowrap;
   padding: 10px 16px;
   background: var(--white);
   border: 3px solid var(--ink);
@@ -387,11 +389,25 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
     radial-gradient(circle, rgba(255, 79, 168, .12) 2px, transparent 3px) 0 0 / 22px 22px,
     #fff7fb;
 }
-.cake { display: flex; flex-direction: column; align-items: center; }
-.candles { display: flex; align-items: flex-end; justify-content: center; gap: 6px; height: 74px; position: relative; z-index: 1; margin-bottom: -3px; }
+/* 케이크 본체는 app.js가 SVG로 그림 (viewBox 460x330, 윗단 윗면 y=82) */
+.cake { position: relative; width: min(460px, 100%); margin: 0 auto; padding-top: 72px; }
+.cake-body { position: relative; }
+.cake-body svg { display: block; width: 100%; height: auto; overflow: visible; }
+.cake-body text { font-family: var(--round); }
+.candles {
+  position: absolute; left: 50%; bottom: 74.6%;
+  transform: translateX(-50%);
+  display: flex; align-items: flex-end; gap: var(--cg, 4px);
+  z-index: 1;
+}
+.cake-spark { position: absolute; z-index: 2; pointer-events: none; animation: twinkle 2.6s ease-in-out infinite; }
+.s-a { left: 2%; top: 38%; font-size: 36px; color: var(--yellow); -webkit-text-stroke: 1.5px var(--ink); }
+.s-b { right: 4%; top: 26%; font-size: 34px; color: var(--sky); -webkit-text-stroke: 1.5px var(--ink); animation-delay: -1s; }
+.s-c { left: 0; top: 6%; font-size: 18px; color: var(--hot); animation-delay: -.6s; }
+.s-d { right: 1%; top: 60%; font-size: 28px; color: var(--lav); -webkit-text-stroke: 1.5px var(--ink); animation-delay: -1.8s; }
 .candle {
   position: relative;
-  width: 13px; height: 44px;
+  width: var(--cw, 13px); height: 44px;
   padding: 0;
   border: 2px solid var(--ink);
   border-bottom: 0;
@@ -425,24 +441,18 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
 @keyframes flicker { from { transform: rotate(-4deg) scaleY(1); } to { transform: rotate(4deg) scaleY(1.12); } }
 @keyframes smoke { from { opacity: .9; transform: translateY(0) scale(.6); } to { opacity: 0; transform: translateY(-34px) scale(2); } }
 
-.tier {
-  position: relative;
-  border: 3px solid var(--ink);
-  background:
-    radial-gradient(var(--yellow) 2.5px, transparent 3.5px) 6px 28px / 26px 22px,
-    radial-gradient(var(--sky) 2.5px, transparent 3.5px) 19px 39px / 26px 22px,
-    var(--pink);
+/* 꾸미기 특수문자 줄 */
+.deco {
+  margin: 0 auto -28px;
+  text-align: center;
+  font-size: clamp(18px, 3vw, 24px);
+  letter-spacing: .06em;
+  color: var(--ink);
+  opacity: .8;
+  white-space: nowrap;
+  overflow: hidden;
 }
-.tier::before {
-  content: "";
-  position: absolute; left: 0; right: 0; top: 0; height: 26px;
-  background:
-    radial-gradient(circle at 50% 0, #fff 9px, transparent 10px) 0 12px / 20px 14px repeat-x,
-    linear-gradient(#fff, #fff) 0 0 / 100% 13px no-repeat;
-}
-.tier-top { width: 310px; height: 68px; border-radius: 14px 14px 4px 4px; }
-.tier-bottom { width: 390px; height: 88px; margin-top: -3px; border-radius: 10px 10px 4px 4px; background-color: var(--lav); }
-.plate { width: 450px; height: 16px; margin-top: -3px; background: var(--white); border: 3px solid var(--ink); border-radius: 999px; box-shadow: 0 5px 0 rgba(59, 35, 112, .15); }
+.deco-end { margin: 30px auto 0; color: var(--hot); }
 
 .cake-msg { margin: 22px 0 14px; font-size: 15px; min-height: 1.6em; }
 .cake-msg.done { font-family: var(--round); font-size: 21px; color: var(--hot); }
@@ -535,7 +545,7 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
   .badge-burst { right: -14px; top: -26px; width: 92px; height: 92px; }
   .badge-burst span { font-size: 18px; }
   .c1 { left: -18px; width: 52px; height: 52px; }
-  .speech { left: -6px; bottom: 26px; max-width: 160px; font-size: 15px; padding: 8px 12px; }
+  .speech { left: -6px; bottom: 26px; font-size: 15px; padding: 8px 12px; }
   .info { grid-template-columns: 1fr; gap: 12px; }
   .info-card p { flex-direction: row; align-items: baseline; justify-content: center; gap: 10px; padding: 10px 8px; }
   .info-card b { display: inline; font-size: 19px; }
@@ -546,11 +556,9 @@ main { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
   .car-prev { left: 6px; }
   .car-next { right: 6px; }
   .messages { grid-template-columns: 1fr; }
-  .candles { gap: 3px; }
-  .candle { width: 12px; }
-  .tier-top { width: 250px; height: 58px; }
-  .tier-bottom { width: 290px; height: 74px; }
-  .plate { width: 310px; }
+  .candles { --cg: 2px; }
+  .candle { --cw: 10px; height: 38px; }
+  .cake { padding-top: 64px; }
   .bgm { right: 10px; bottom: 10px; width: auto; border-radius: 999px; }
   .bgm .win-bar, .bgm-title { display: none; }
   .bgm-body { padding: 5px 12px 5px 5px; }

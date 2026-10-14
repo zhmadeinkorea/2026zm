@@ -13,7 +13,11 @@ window.BIRTHDAY_CONFIG = {
   albumSub: "말랑유과아기강아지",
 
   // 대표 사진 옆 말풍선
-  speech: "와 줘서 고마워 멍! 🐾",
+  speech: "와 줘서 고마워 멍! 𐔌՞. .՞𐦯",
+
+  // 케이크: 애칭, 촛불을 다 껐을 때 문구 ({age}는 나이로 바뀜)
+  nickname: "째지미",
+  cakeMessage: "째지미 {age}살 생일 축하해 💕",
 
   // 대표 사진 (photos 폴더 안 파일명). 비워 두면 첫 번째 사진
   coverPhoto: "KakaoTalk_20261012_151417164.jpg",

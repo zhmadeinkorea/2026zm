@@ -49,12 +49,12 @@
       <h1 class="title"><span id="titleName">지미야</span><span>생일 축하해!</span></h1>
       <p class="ribbon" id="ribbon"></p>
       <div class="info" id="info"></div>
-      <button class="pix-btn" id="partyBtn" type="button">★ 생일 축하하기 ★</button>
+      <button class="pix-btn" id="partyBtn" type="button">⋆˚✿˖° 생일 축하하기 °˖✿˚⋆</button>
     </div>
 
     <div class="cover-wrap">
       <div class="win cover-win">
-        <div class="win-bar"><span class="win-title" id="coverTitle">대표사진.jpg</span><span class="win-btns"><i>─</i><i>□</i><i>✕</i></span></div>
+        <div class="win-bar"><span class="win-title" id="coverTitle">𐙚 대표사진.jpg</span><span class="win-btns"><i>─</i><i>□</i><i>✕</i></span></div>
         <div class="cover" id="cover"></div>
       </div>
       <p class="speech" id="speech">와 줘서 고마워 멍! 🐾</p>
@@ -70,10 +70,12 @@
   <main>
     <section class="section" id="letterSection" hidden>
       <div class="win letter-win">
-        <div class="win-bar"><span class="win-title">♡ 편지.txt</span><span class="win-btns"><i>─</i><i>□</i><i>✕</i></span></div>
+        <div class="win-bar"><span class="win-title">୨୧ 편지.txt</span><span class="win-btns"><i>─</i><i>□</i><i>✕</i></span></div>
         <div class="letter" id="letter"></div>
       </div>
     </section>
+
+    <p class="deco" aria-hidden="true">⋆˚꩜｡𐔌՞. .՞𐦯⋆. 𐙚 ˚</p>
 
     <section class="section">
       <h2 class="sec-title"><span>사진첩</span><small id="albumSub">반짝반짝 우리 지미</small></h2>
@@ -94,18 +96,23 @@
       </div>
     </section>
 
+    <p class="deco" aria-hidden="true">✧˖°. ⋆｡˚ ꒰ᐢ. .ᐢ꒱ ˚｡⋆ .°˖✧</p>
+
     <section class="section" id="cakeSection">
       <h2 class="sec-title"><span>소원 빌기</span><small id="cakeSub">촛불을 모두 꺼 주세요</small></h2>
       <div class="win cake-win">
-        <div class="win-bar"><span class="win-title">🎂 케이크.exe</span><span class="win-btns"><i>─</i><i>□</i><i>✕</i></span></div>
+        <div class="win-bar"><span class="win-title">⋆౨ৎ˚ 케이크.exe</span><span class="win-btns"><i>─</i><i>□</i><i>✕</i></span></div>
         <div class="cake-stage">
           <div class="cake">
-            <div class="candles" id="candles"></div>
-            <div class="tier tier-top"></div>
-            <div class="tier tier-bottom"></div>
-            <div class="plate"></div>
+            <span class="cake-spark s-a" aria-hidden="true">✧</span>
+            <span class="cake-spark s-b" aria-hidden="true">⋆</span>
+            <span class="cake-spark s-c" aria-hidden="true">˚ʚ♡ɞ˚</span>
+            <span class="cake-spark s-d" aria-hidden="true">✦</span>
+            <div class="cake-body" id="cakeBody">
+              <div class="candles" id="candles"></div>
+            </div>
           </div>
-          <p class="cake-msg" id="cakeMsg" role="status">촛불을 눌러서 끄거나, 마이크에 대고 "후~" 불어 보세요</p>
+          <p class="cake-msg" id="cakeMsg" role="status">촛불을 눌러서 끄거나, 마이크에 대고 "후~" 불어 보세요 ⋆˚꩜｡</p>
           <div class="cake-actions">
             <button class="pix-btn small" id="blowBtn" type="button">🎤 후~ 불기</button>
             <button class="pix-btn small alt" id="relightBtn" type="button" hidden>🕯 다시 켜기</button>
@@ -114,10 +121,12 @@
       </div>
     </section>
 
+    <p class="deco" aria-hidden="true">₊˚⊹♡ ‧₊˚ ꒰ა ♡ ໒꒱ ˚₊‧ ♡⊹˚₊</p>
+
     <section class="section" id="guestbookSection">
       <h2 class="sec-title"><span>축하 메시지</span><small id="gbSub">지미에게 한마디 남겨 주세요</small></h2>
       <div class="win gb-win">
-        <div class="win-bar"><span class="win-title">♡ 메시지.txt</span><span class="win-btns"><i>─</i><i>□</i><i>✕</i></span></div>
+        <div class="win-bar"><span class="win-title">ᡣ𐭩 메시지.txt</span><span class="win-btns"><i>─</i><i>□</i><i>✕</i></span></div>
         <form class="gb-form" id="gbForm">
           <label>보내는 사람<input id="gbName" maxlength="20" placeholder="이름" required autocomplete="nickname"></label>
           <label>메시지<textarea id="gbText" maxlength="300" rows="3" placeholder="생일 축하 한마디!" required></textarea></label>
@@ -131,14 +140,16 @@
     </section>
   </main>
 
+  <p class="deco deco-end" aria-hidden="true">⋆｡ﾟ☁︎｡⋆｡ ﾟ☾ ﾟ｡⋆ 𐔌՞. .՞𐦯 ⋆｡ﾟ☁︎｡⋆｡ ﾟ☾ ﾟ｡⋆</p>
+
   <footer class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></footer>
 
   <aside class="win bgm" id="bgm" aria-label="배경음악 플레이어">
-    <div class="win-bar"><span class="win-title">♪ BGM</span><span class="win-btns"><i>─</i><i>□</i><i>✕</i></span></div>
+    <div class="win-bar"><span class="win-title">♪ BGM ⋆˚꩜｡</span><span class="win-btns"><i>─</i><i>□</i><i>✕</i></span></div>
     <div class="bgm-body">
       <button class="bgm-play" id="bgmPlay" type="button" aria-label="생일 노래 재생">▶</button>
       <div class="bgm-info">
-        <div class="bgm-title"><span>♬ 생일 축하합니다 (8비트 ver.) ♬ 생일 축하합니다 (8비트 ver.)&nbsp;</span></div>
+        <div class="bgm-title"><span>♬ 생일 축하합니다 (8비트 ver.) ⋆˚꩜｡ ♬ 생일 축하합니다 (8비트 ver.) ⋆˚꩜｡&nbsp;</span></div>
         <div class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
       </div>
     </div>
