@@ -103,5 +103,103 @@
         "thumb":  "thumbs/p15.jpg",
         "large":  "photos/p15.jpg",
         "video":  false
+    },
+    {
+        "name":  "KakaoTalk_20261014_142135014.jpg",
+        "url":  "photos/p16.jpg",
+        "thumb":  "thumbs/p16.jpg",
+        "large":  "photos/p16.jpg",
+        "video":  false
+    },
+    {
+        "name":  "KakaoTalk_20261014_142135014_01.jpg",
+        "url":  "photos/p17.jpg",
+        "thumb":  "thumbs/p17.jpg",
+        "large":  "photos/p17.jpg",
+        "video":  false
+    },
+    {
+        "name":  "KakaoTalk_20261014_142135014_02.jpg",
+        "url":  "photos/p18.jpg",
+        "thumb":  "thumbs/p18.jpg",
+        "large":  "photos/p18.jpg",
+        "video":  false
+    },
+    {
+        "name":  "KakaoTalk_20261014_142135014_03.jpg",
+        "url":  "photos/p19.jpg",
+        "thumb":  "thumbs/p19.jpg",
+        "large":  "photos/p19.jpg",
+        "video":  false
+    },
+    {
+        "name":  "KakaoTalk_20261014_142135014_04.jpg",
+        "url":  "photos/p20.jpg",
+        "thumb":  "thumbs/p20.jpg",
+        "large":  "photos/p20.jpg",
+        "video":  false
+    },
+    {
+        "name":  "KakaoTalk_20261014_142135014_05.jpg",
+        "url":  "photos/p21.jpg",
+        "thumb":  "thumbs/p21.jpg",
+        "large":  "photos/p21.jpg",
+        "video":  false
+    },
+    {
+        "name":  "KakaoTalk_20261014_142135014_06.jpg",
+        "url":  "photos/p22.jpg",
+        "thumb":  "thumbs/p22.jpg",
+        "large":  "photos/p22.jpg",
+        "video":  false
+    },
+    {
+        "name":  "KakaoTalk_20261014_142135014_07.jpg",
+        "url":  "photos/p23.jpg",
+        "thumb":  "thumbs/p23.jpg",
+        "large":  "photos/p23.jpg",
+        "video":  false
+    },
+    {
+        "name":  "KakaoTalk_20261014_142135014_08.jpg",
+        "url":  "photos/p24.jpg",
+        "thumb":  "thumbs/p24.jpg",
+        "large":  "photos/p24.jpg",
+        "video":  false
+    },
+    {
+        "name":  "KakaoTalk_20261014_142135014_09.jpg",
+        "url":  "photos/p25.jpg",
+        "thumb":  "thumbs/p25.jpg",
+        "large":  "photos/p25.jpg",
+        "video":  false
+    },
+    {
+        "name":  "KakaoTalk_20261014_142135014_10.jpg",
+        "url":  "photos/p26.jpg",
+        "thumb":  "thumbs/p26.jpg",
+        "large":  "photos/p26.jpg",
+        "video":  false
+    },
+    {
+        "name":  "KakaoTalk_20261014_142135014_11.jpg",
+        "url":  "photos/p27.jpg",
+        "thumb":  "thumbs/p27.jpg",
+        "large":  "photos/p27.jpg",
+        "video":  false
+    },
+    {
+        "name":  "KakaoTalk_20261014_142135014_12.jpg",
+        "url":  "photos/p28.jpg",
+        "thumb":  "thumbs/p28.jpg",
+        "large":  "photos/p28.jpg",
+        "video":  false
+    },
+    {
+        "name":  "KakaoTalk_20261014_142135014_13.jpg",
+        "url":  "photos/p29.jpg",
+        "thumb":  "thumbs/p29.jpg",
+        "large":  "photos/p29.jpg",
+        "video":  false
     }
 ]
