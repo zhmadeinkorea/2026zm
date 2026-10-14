@@ -8,6 +8,10 @@ window.BIRTHDAY_CONFIG = {
   letter: "",
   letterFrom: "",
 
+  // 사진첩 창 제목 / 사진첩 아래 문구
+  albumTitle: "째지미 사진첩",
+  albumSub: "말랑유과아기강아지",
+
   // 대표 사진 옆 말풍선
   speech: "와 줘서 고마워 멍! 🐾",
 

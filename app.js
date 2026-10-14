@@ -22,8 +22,8 @@
   const callName = vocative(dogName);
   $("#titleName").textContent = callName;
   $("#coverTitle").textContent = `${dogName}.jpg`;
-  $("#albumTitle").textContent = `📁 ${dogName} 사진첩`;
-  $("#albumSub").textContent = `반짝반짝 우리 ${dogName}`;
+  $("#albumTitle").textContent = `📁 ${C.albumTitle || `${dogName} 사진첩`}`;
+  $("#albumSub").textContent = C.albumSub || `반짝반짝 우리 ${dogName}`;
   $("#gbSub").textContent = `${dogName}에게 한마디 남겨 주세요`;
   if (C.speech) $("#speech").textContent = C.speech;
 
