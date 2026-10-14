@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 링크 공유 미리보기 (카톡 등은 JS를 실행하지 않으므로 여기 문구가 그대로 보임) -->
+  <title>2026 지미야 생일 축하해</title>
+  <meta name="description" content="10월 19일, 지미의 15번째 생일 ♡ 축하 메시지를 남겨 주세요">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="2026 지미야 생일 축하해">
+  <meta property="og:description" content="10월 19일, 지미의 15번째 생일 ♡ 축하 메시지를 남겨 주세요">
+  <meta property="og:url" content="https://zhmadeinkorea.github.io/2026zm/">
+  <meta property="og:image" content="https://zhmadeinkorea.github.io/2026zm/og.png?v=1">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⭐</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galmuri@2.40.3/dist/galmuri.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- sticker shapes -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="star" viewBox="0 0 100 100"><path d="M50 5 62 36 95 37 69 58 78 92 50 73 22 92 31 58 5 37 38 36Z" stroke-width="6" stroke-linejoin="round"/></symbol>
+    <symbol id="sparkle" viewBox="0 0 100 100"><path d="M50 2C54 36 64 46 98 50 64 54 54 64 50 98 46 64 36 54 2 50 36 46 46 36 50 2Z" stroke-width="5" stroke-linejoin="round"/></symbol>
+    <symbol id="heart" viewBox="0 0 100 100"><path d="M50 88C20 66 6 50 8 32 10 16 26 8 38 12c6 2 10 6 12 11 2-5 6-9 12-11 12-4 28 4 30 20 2 18-12 34-42 56Z" stroke-width="6" stroke-linejoin="round"/></symbol>
+    <symbol id="paw" viewBox="0 0 100 100"><g stroke-width="5"><ellipse cx="50" cy="67" rx="22" ry="18"/><ellipse cx="23" cy="41" rx="9" ry="12"/><ellipse cx="40" cy="25" rx="9" ry="12"/><ellipse cx="60" cy="25" rx="9" ry="12"/><ellipse cx="77" cy="41" rx="9" ry="12"/></g></symbol>
+    <symbol id="burst" viewBox="0 0 100 100"><path d="M50 2 58 18 75 8 76 27 95 25 86 42 99 54 82 62 90 79 71 78 68 97 54 85 42 99 37 81 18 88 22 69 3 63 17 50 5 35 24 31 22 12 40 19Z" stroke-width="4" stroke-linejoin="round"/></symbol>
+  </svg>
+
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <div class="stickers" aria-hidden="true">
+    <svg class="sk s1"><use href="#star"/></svg>
+    <svg class="sk s2"><use href="#sparkle"/></svg>
+    <svg class="sk s3"><use href="#heart"/></svg>
+    <svg class="sk s4"><use href="#star"/></svg>
+    <svg class="sk s5"><use href="#sparkle"/></svg>
+    <svg class="sk s6"><use href="#star"/></svg>
+    <svg class="sk s7"><use href="#heart"/></svg>
+    <svg class="sk s8"><use href="#sparkle"/></svg>
+  </div>
+
+  <header class="hero">
+    <div class="hero-text">
+      <p class="tags" id="tags"></p>
+      <h1 class="title"><span id="titleName">지미야</span><span>생일 축하해!</span></h1>
+      <p class="ribbon" id="ribbon"></p>
+      <div class="info" id="info"></div>
+      <button class="pix-btn" id="partyBtn" type="button">★ 생일 축하하기 ★</button>
+    </div>
+
+    <div class="cover-wrap">
+      <div class="win cover-win">
+        <div class="win-bar"><span class="win-title" id="coverTitle">대표사진.jpg</span><span class="win-btns"><i>─</i><i>□</i><i>✕</i></span></div>
+        <div class="cover" id="cover"></div>
+      </div>
+      <p class="speech" id="speech">와 줘서 고마워 멍! 🐾</p>
+      <div class="badge-burst" id="ageBurst" aria-hidden="true">
+        <svg><use href="#burst"/></svg><span id="ageBurstText"></span>
+      </div>
+      <svg class="cover-sk c1" aria-hidden="true"><use href="#star"/></svg>
+      <svg class="cover-sk c2" aria-hidden="true"><use href="#heart"/></svg>
+      <svg class="cover-sk c3" aria-hidden="true"><use href="#sparkle"/></svg>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="letterSection" hidden>
+      <div class="win letter-win">
+        <div class="win-bar"><span class="win-title">♡ 편지.txt</span><span class="win-btns"><i>─</i><i>□</i><i>✕</i></span></div>
+        <div class="letter" id="letter"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="sec-title"><span>사진첩</span><small id="albumSub">반짝반짝 우리 지미</small></h2>
+      <div class="win album-win">
+        <div class="win-bar"><span class="win-title" id="albumTitle">📁 사진첩</span><span class="win-btns"><i>─</i><i>□</i><i>✕</i></span></div>
+        <div class="carousel" id="carousel" hidden>
+          <div class="track" id="track"></div>
+          <button class="pix-btn small car-btn car-prev" id="carPrev" type="button" aria-label="이전 사진">◀</button>
+          <button class="pix-btn small car-btn car-next" id="carNext" type="button" aria-label="다음 사진">▶</button>
+          <div class="car-meta">
+            <span class="car-count" id="carCount"></span>
+            <span class="car-cap" id="carCap"></span>
+            <button class="car-play" id="carPlay" type="button">❚❚ 멈춤</button>
+          </div>
+          <div class="thumbs" id="thumbs"></div>
+        </div>
+        <p class="empty" id="galleryEmpty" hidden>photos 폴더에 사진을 넣고 새로고침해 주세요 ★</p>
+      </div>
+    </section>
+
+    <section class="section" id="cakeSection">
+      <h2 class="sec-title"><span>소원 빌기</span><small id="cakeSub">촛불을 모두 꺼 주세요</small></h2>
+      <div class="win cake-win">
+        <div class="win-bar"><span class="win-title">🎂 케이크.exe</span><span class="win-btns"><i>─</i><i>□</i><i>✕</i></span></div>
+        <div class="cake-stage">
+          <div class="cake">
+            <div class="candles" id="candles"></div>
+            <div class="tier tier-top"></div>
+            <div class="tier tier-bottom"></div>
+            <div class="plate"></div>
+          </div>
+          <p class="cake-msg" id="cakeMsg" role="status">촛불을 눌러서 끄거나, 마이크에 대고 "후~" 불어 보세요</p>
+          <div class="cake-actions">
+            <button class="pix-btn small" id="blowBtn" type="button">🎤 후~ 불기</button>
+            <button class="pix-btn small alt" id="relightBtn" type="button" hidden>🕯 다시 켜기</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="guestbookSection">
+      <h2 class="sec-title"><span>축하 메시지</span><small id="gbSub">지미에게 한마디 남겨 주세요</small></h2>
+      <div class="win gb-win">
+        <div class="win-bar"><span class="win-title">♡ 메시지.txt</span><span class="win-btns"><i>─</i><i>□</i><i>✕</i></span></div>
+        <form class="gb-form" id="gbForm">
+          <label>보내는 사람<input id="gbName" maxlength="20" placeholder="이름" required autocomplete="nickname"></label>
+          <label>메시지<textarea id="gbText" maxlength="300" rows="3" placeholder="생일 축하 한마디!" required></textarea></label>
+          <div class="gb-actions">
+            <span class="gb-status" id="gbStatus" role="status"></span>
+            <button class="pix-btn small" type="submit">보내기 ♡</button>
+          </div>
+        </form>
+      </div>
+      <ul class="messages" id="messages"></ul>
+    </section>
+  </main>
+
+  <footer class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></footer>
+
+  <aside class="win bgm" id="bgm" aria-label="배경음악 플레이어">
+    <div class="win-bar"><span class="win-title">♪ BGM</span><span class="win-btns"><i>─</i><i>□</i><i>✕</i></span></div>
+    <div class="bgm-body">
+      <button class="bgm-play" id="bgmPlay" type="button" aria-label="생일 노래 재생">▶</button>
+      <div class="bgm-info">
+        <div class="bgm-title"><span>♬ 생일 축하합니다 (8비트 ver.) ♬ 생일 축하합니다 (8비트 ver.)&nbsp;</span></div>
+        <div class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="egg-toast" id="eggToast" role="status" hidden></div>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <div class="win lb-win">
+      <div class="win-bar"><span class="win-title" id="lbTitle"></span><span class="win-btns"><i>─</i><i>□</i><button id="lbClose" aria-label="닫기">✕</button></span></div>
+      <div class="lb-media" id="lbMedia"></div>
+      <div class="lb-nav">
+        <button class="pix-btn small" id="lbPrev" aria-label="이전">◀</button>
+        <span class="lb-cap" id="lbCaption"></span>
+        <button class="pix-btn small" id="lbNext" aria-label="다음">▶</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
